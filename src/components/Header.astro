@@ -1,0 +1,41 @@
+---
+import { nav, site } from "../data/site";
+---
+
+<header class="border-b border-black/10">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+    <a href="#top" class="font-serif text-lg font-semibold tracking-tight">
+      {site.name}
+    </a>
+
+    <nav aria-label="Primary">
+      <ul class="hidden gap-8 text-sm md:flex">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="hover:underline underline-offset-4">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Mobile: simple anchor list, no JS needed for Pass 1 -->
+      <details class="md:hidden">
+        <summary class="cursor-pointer list-none text-sm select-none">Menu</summary>
+        <ul class="absolute right-6 z-20 mt-2 flex flex-col gap-3 border border-black/10 bg-cream p-4 text-sm shadow-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} class="block">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>

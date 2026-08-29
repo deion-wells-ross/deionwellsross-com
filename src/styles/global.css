@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+  PASS 1 — STRUCTURE ONLY
+  Brand palette below is final (provided by client). Full application —
+  typography scale, texture accents, spacing rhythm, transitions — is Pass 3.
+
+  Primary (dominant): espresso #926148, forest #294B2E
+  Accent (sparing): burnt orange #DB690D, dark green #10251F
+*/
+@theme {
+  --color-espresso: #926148;
+  --color-forest: #294b2e;
+  --color-burnt: #db690d;
+  --color-pine: #10251f;
+
+  /* Neutral working surfaces (may be refined in Pass 3) */
+  --color-cream: #f4f1ea;
+  --color-ink: #10251f;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible focus for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}

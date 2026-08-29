@@ -1,0 +1,49 @@
+---
+const steps = [
+  {
+    title: "Defined the audience and objective",
+    body: "Named the visitors this site is for — hiring leaders, recruiters, potential clients, collaborators — and the single job it needs to do: show that I can translate a business problem into an AI-enabled solution.",
+  },
+  {
+    title: "Translated the brief into architecture",
+    body: "Wrote a structured brief — purpose, audience, scope, tone, constraints — and turned it into an information architecture and a phased build plan before any code was written.",
+  },
+  {
+    title: "Directed iterative AI-assisted development",
+    body: "Built the site by directing Claude Code as a coding agent: specifying each section, reviewing the output, correcting course, and iterating in passes rather than one prompt.",
+  },
+  {
+    title: "Reviewed and refined the code",
+    body: "Read the generated code, tightened structure and semantics, kept the dependency footprint minimal, and made deliberate calls on what to keep, cut, or rework.",
+  },
+  {
+    title: "Tested and deployed",
+    body: "Checked responsiveness, links, accessibility, and performance, then deployed on Vercel with continuous deployment from the main branch.",
+  },
+];
+---
+
+<section id="how-i-built-this" class="border-t border-black/10 bg-white/40">
+  <div class="mx-auto max-w-5xl px-6 py-20 md:py-24">
+    <h2 class="font-serif text-3xl md:text-4xl">How I Built This</h2>
+    <p class="mt-3 max-w-2xl text-ink/70">
+      This site is itself an example of the work. It was built by directing an AI
+      coding agent through a defined process — the same way I approach client
+      solutions.
+    </p>
+
+    <ol class="mt-12 grid gap-8 md:grid-cols-2">
+      {
+        steps.map((step, i) => (
+          <li>
+            <p class="font-serif text-2xl text-espresso/50">
+              {String(i + 1).padStart(2, "0")}
+            </p>
+            <h3 class="mt-1 text-lg font-medium">{step.title}</h3>
+            <p class="mt-2 text-ink/80">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

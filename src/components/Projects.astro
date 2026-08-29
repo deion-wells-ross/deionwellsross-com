@@ -1,0 +1,62 @@
+---
+import { projects } from "../data/site";
+---
+
+<section id="projects" class="border-t border-black/10 bg-white/40">
+  <div class="mx-auto max-w-5xl px-6 py-20 md:py-24">
+    <h2 class="font-serif text-3xl md:text-4xl">Selected Projects</h2>
+    <p class="mt-3 max-w-2xl text-ink/70">
+      A few representative engagements — the problem, what was built, and the
+      outcome for the business.
+    </p>
+
+    <div class="mt-14 flex flex-col gap-16">
+      {
+        projects.map((project, i) => (
+          <article class="grid gap-6 md:grid-cols-[1fr_2fr]">
+            <div>
+              <p class="text-sm text-espresso/60">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 class="mt-1 font-serif text-2xl">{project.title}</h3>
+              <ul class="mt-4 flex flex-wrap gap-2">
+                {project.technology.map((tech) => (
+                  <li class="border border-black/15 px-2 py-1 text-xs text-ink/70">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <dl class="space-y-4">
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-espresso/60">
+                  Problem
+                </dt>
+                <dd class="mt-1 text-ink/85">{project.problem}</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-espresso/60">
+                  Solution
+                </dt>
+                <dd class="mt-1 text-ink/85">{project.solution}</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-espresso/60">
+                  My contribution
+                </dt>
+                <dd class="mt-1 text-ink/85">{project.contribution}</dd>
+              </div>
+              <div>
+                <dt class="text-xs uppercase tracking-widest text-espresso/60">
+                  Business outcome
+                </dt>
+                <dd class="mt-1 text-ink/85">{project.outcome}</dd>
+              </div>
+            </dl>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
