@@ -1,36 +1,55 @@
 ---
-import { contact } from "../data/site";
+const facets = [
+  "Implementation leadership",
+  "Forward-deployed engineering",
+  "Management consulting",
+  "Workflow automation",
+  "Adoption",
+];
 ---
 
-<section id="top" class="mx-auto max-w-5xl px-6 py-20 md:py-28">
-  <p class="text-sm uppercase tracking-widest text-espresso/70">
+<section id="top" class="mx-auto max-w-5xl px-6 pt-20 pb-24 md:pt-28 md:pb-32">
+  <p class="eyebrow text-espresso reveal">
     AI Solutions — from problem to adoption
   </p>
 
-  <h1 class="mt-5 max-w-3xl font-serif text-4xl leading-tight md:text-6xl">
+  <h1
+    class="reveal mt-7 max-w-4xl text-forest"
+    style="font-size: var(--text-display)"
+  >
     I turn operational problems into AI-enabled workflows that change how work
     gets done.
   </h1>
 
-  <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink/80">
+  <p
+    class="reveal mt-8 max-w-2xl text-ink/75"
+    style="font-size: var(--text-lead); transition-delay: 60ms"
+  >
     I work at the intersection of business and technology — identifying where
     work breaks down, designing AI-enabled workflows to fix it, integrating the
     technical solution, and helping people actually adopt it. Not an
     introduction to AI. A change in how the work happens.
   </p>
 
-  <div class="mt-10 flex flex-wrap gap-4">
-    <a
-      href="#projects"
-      class="border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-cream"
-    >
-      View selected projects
-    </a>
-    <a
-      href="#contact"
-      class="border border-ink/30 px-6 py-3 text-sm font-medium hover:border-ink"
-    >
-      Get in touch
-    </a>
+  <div
+    class="reveal mt-11 flex flex-wrap gap-4"
+    style="transition-delay: 120ms"
+  >
+    <a href="#projects" class="btn btn-primary">View selected projects</a>
+    <a href="#contact" class="btn btn-secondary">Get in touch</a>
   </div>
+
+  <ul
+    class="reveal mt-16 flex flex-wrap gap-x-6 gap-y-3 border-t border-espresso/20 pt-6 text-sm text-ink/55"
+    style="transition-delay: 160ms"
+  >
+    {
+      facets.map((facet) => (
+        <li class="flex items-center gap-3">
+          <span class="h-1 w-1 rounded-full bg-burnt" aria-hidden="true" />
+          {facet}
+        </li>
+      ))
+    }
+  </ul>
 </section>

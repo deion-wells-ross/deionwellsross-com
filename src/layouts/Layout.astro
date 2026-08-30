@@ -21,7 +21,16 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#294b2e" />
     <link rel="canonical" href={canonical} />
+
+    <!-- Editorial display face. Body copy stays on the system sans. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,460;9..144,560&display=swap"
+    />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -39,9 +48,41 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta name="twitter:image" content={`${site.url}/og-image.png`} />
 
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Reveal is progressive enhancement: no JS, no hidden content. -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <slot />
+
+    <script>
+      // Section-arrival reveal. One pass, then the observer lets go.
+      const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const targets = document.querySelectorAll<HTMLElement>(".reveal");
+
+      if (media.matches || !("IntersectionObserver" in window)) {
+        targets.forEach((el) => el.classList.add("is-visible"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

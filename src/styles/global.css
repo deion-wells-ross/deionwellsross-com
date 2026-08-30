@@ -1,42 +1,207 @@
 @import "tailwindcss";
 
 /*
-  PASS 1 — STRUCTURE ONLY
-  Brand palette below is final (provided by client). Full application —
-  typography scale, texture accents, spacing rhythm, transitions — is Pass 3.
+  PASS 3 — VISUAL DESIGN
 
-  Primary (dominant): espresso #926148, forest #294B2E
-  Accent (sparing): burnt orange #DB690D, dark green #10251F
+  Palette (final, from client brand):
+    Primary / dominant   espresso #926148   forest #294B2E
+    Accent  / sparing    burnt    #DB690D   pine   #10251F
+
+  Primary colors carry the page: section backgrounds, display type, structural
+  rules. Accents are rationed — CTAs, links, hover states, the index numerals.
+
+  Direction: editorial. An expressive serif for display against a plain
+  humanist sans for reading, wide margins, a firm typographic scale, and
+  motion only where it clarifies (a link responding, a section arriving).
+  No gradients, no glass, no particles.
 */
+
 @theme {
+  /* Primary — dominant */
   --color-espresso: #926148;
+  --color-espresso-deep: #7c503a;
   --color-forest: #294b2e;
+  --color-forest-deep: #1f3a24;
+
+  /* Accent — sparing */
   --color-burnt: #db690d;
   --color-pine: #10251f;
 
-  /* Neutral working surfaces (may be refined in Pass 3) */
+  /* Paper + ink */
   --color-cream: #f4f1ea;
+  --color-paper: #faf8f3;
   --color-ink: #10251f;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Fluid editorial type scale */
+  --text-eyebrow: 0.78rem;
+  --text-display: clamp(2.6rem, 6vw, 4.6rem);
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h3: clamp(1.3rem, 2.2vw, 1.7rem);
+  --text-lead: clamp(1.1rem, 1.4vw, 1.28rem);
+
+  /* Vertical rhythm for full sections */
+  --space-section: clamp(5rem, 12vh, 9rem);
 }
+
+/* ---------------------------------------------------------------- base --- */
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   background-color: var(--color-cream);
   color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Respect users who prefer reduced motion */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 460;
+  font-optical-sizing: auto;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-burnt);
+  color: var(--color-cream);
+}
+
+/* --------------------------------------------------------- components --- */
+/* Layered so single-purpose utilities (e.g. text-pine on a .numeral) win. */
+@layer components {
+
+/* Small caps label used above every section heading and in metadata rows */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* Primary action — solid, weighty. Forest at rest, burnt on hover. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+.btn-primary {
+  background-color: var(--color-forest);
+  color: var(--color-cream);
+}
+.btn-primary:hover {
+  background-color: var(--color-burnt);
+}
+.btn-secondary {
+  border-color: color-mix(in srgb, var(--color-espresso) 45%, transparent);
+  color: var(--color-ink);
+}
+.btn-secondary:hover {
+  border-color: var(--color-forest);
+  color: var(--color-forest);
+}
+/* On dark (forest / espresso) sections */
+.on-dark .btn-primary {
+  background-color: var(--color-cream);
+  color: var(--color-forest);
+}
+.on-dark .btn-primary:hover {
+  background-color: var(--color-burnt);
+  color: var(--color-cream);
+}
+.on-dark .btn-secondary {
+  border-color: color-mix(in srgb, var(--color-cream) 40%, transparent);
+  color: var(--color-cream);
+}
+.on-dark .btn-secondary:hover {
+  border-color: var(--color-cream);
+  color: var(--color-cream);
+}
+
+/* Editorial link — ink text, burnt underline that thickens on hover */
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-burnt) 55%, transparent);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition:
+    text-decoration-color 150ms ease,
+    text-decoration-thickness 150ms ease,
+    color 150ms ease;
+}
+.link:hover {
+  color: var(--color-burnt);
+  text-decoration-color: var(--color-burnt);
+  text-decoration-thickness: 2px;
+}
+.on-dark .link:hover {
+  color: #f0a86a;
+  text-decoration-color: #f0a86a;
+}
+
+/* Index numeral — Fraunces, burnt, the one recurring flash of accent */
+.numeral {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--color-burnt);
+}
+
+}
+
+/* --------------------------------------------------------- motion --- */
+
+/* Section-arrival reveal. Purposeful, single pass, short travel. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
   *,
   *::before,
@@ -47,10 +212,14 @@ body {
   }
 }
 
-/* Visible focus for keyboard navigation */
+/* --------------------------------------------------------- a11y --- */
+
 :focus-visible {
-  outline: 2px solid var(--color-forest);
+  outline: 2px solid var(--color-burnt);
   outline-offset: 3px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-cream);
 }
 
 .skip-link {
@@ -59,8 +228,9 @@ body {
   top: 0;
   z-index: 100;
   padding: 0.75rem 1rem;
-  background: var(--color-ink);
+  background: var(--color-pine);
   color: var(--color-cream);
+  font-weight: 600;
 }
 .skip-link:focus {
   left: 0.5rem;

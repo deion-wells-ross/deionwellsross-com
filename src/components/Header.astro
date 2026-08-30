@@ -2,18 +2,26 @@
 import { nav, site } from "../data/site";
 ---
 
-<header class="border-b border-black/10">
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-    <a href="#top" class="font-serif text-lg font-semibold tracking-tight">
+<header
+  class="sticky top-0 z-40 border-b border-espresso/20 bg-cream"
+>
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a
+      href="#top"
+      class="font-serif text-lg font-medium tracking-tight text-forest"
+    >
       {site.name}
     </a>
 
     <nav aria-label="Primary">
-      <ul class="hidden gap-8 text-sm md:flex">
+      <ul class="hidden items-center gap-9 text-sm md:flex">
         {
           nav.map((item) => (
             <li>
-              <a href={item.href} class="hover:underline underline-offset-4">
+              <a
+                href={item.href}
+                class="text-ink/75 transition-colors duration-150 hover:text-burnt"
+              >
                 {item.label}
               </a>
             </li>
@@ -21,14 +29,23 @@ import { nav, site } from "../data/site";
         }
       </ul>
 
-      <!-- Mobile: simple anchor list, no JS needed for Pass 1 -->
-      <details class="md:hidden">
-        <summary class="cursor-pointer list-none text-sm select-none">Menu</summary>
-        <ul class="absolute right-6 z-20 mt-2 flex flex-col gap-3 border border-black/10 bg-cream p-4 text-sm shadow-sm">
+      <!-- Mobile: native disclosure, no JS -->
+      <details class="relative md:hidden">
+        <summary
+          class="cursor-pointer list-none text-sm font-medium text-forest select-none"
+        >
+          Menu
+        </summary>
+        <ul
+          class="absolute right-0 z-20 mt-3 flex w-44 flex-col gap-1 border border-espresso/20 bg-paper p-2 text-sm shadow-lg shadow-pine/5"
+        >
           {
             nav.map((item) => (
               <li>
-                <a href={item.href} class="block">
+                <a
+                  href={item.href}
+                  class="block px-3 py-2 text-ink/80 hover:bg-forest hover:text-cream"
+                >
                   {item.label}
                 </a>
               </li>

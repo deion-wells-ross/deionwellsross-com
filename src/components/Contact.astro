@@ -3,30 +3,35 @@ import { contact } from "../data/site";
 
 const links = [
   { label: "Email", value: contact.email, href: `mailto:${contact.email}` },
-  { label: "LinkedIn", value: "linkedin.com/in/deionwellsross", href: contact.linkedin },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/deionwellsross",
+    href: contact.linkedin,
+  },
   { label: "GitHub", value: "github.com/deion-wells-ross", href: contact.github },
 ];
 ---
 
-<section id="contact" class="border-t border-black/10">
-  <div class="mx-auto max-w-5xl px-6 py-20 md:py-24">
-    <h2 class="font-serif text-3xl md:text-4xl">Contact</h2>
-    <p class="mt-3 max-w-2xl text-ink/70">
+<section id="contact" class="bg-cream">
+  <div class="mx-auto max-w-5xl px-6" style="padding-block: var(--space-section)">
+    <p class="eyebrow text-espresso reveal">Contact</p>
+    <h2 class="reveal mt-4 text-forest" style="font-size: var(--text-h2)">
+      Contact
+    </h2>
+    <p class="reveal mt-4 max-w-2xl text-ink/70">
       If you're working on something where AI could change how the work gets
       done, I'd like to hear about it.
     </p>
 
-    <div class="mt-10 grid gap-8 sm:grid-cols-2">
-      <ul class="space-y-4">
+    <div class="mt-12 grid gap-10 border-t border-espresso/20 pt-10 sm:grid-cols-2">
+      <ul class="reveal space-y-6">
         {
           links.map((link) => (
             <li>
-              <span class="block text-xs uppercase tracking-widest text-espresso/60">
-                {link.label}
-              </span>
+              <span class="eyebrow block text-espresso/70">{link.label}</span>
               <a
                 href={link.href}
-                class="text-lg hover:underline underline-offset-4"
+                class="link mt-1 inline-block text-lg"
                 {...link.label !== "Email"
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {}}
@@ -38,15 +43,9 @@ const links = [
         }
       </ul>
 
-      <div>
-        <span class="block text-xs uppercase tracking-widest text-espresso/60">
-          Résumé
-        </span>
-        <a
-          href={contact.resume}
-          download
-          class="mt-2 inline-block border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-cream"
-        >
+      <div class="reveal" style="transition-delay: 80ms">
+        <span class="eyebrow block text-espresso/70">Résumé</span>
+        <a href={contact.resume} download class="btn btn-primary mt-3">
           Download résumé (PDF)
         </a>
       </div>

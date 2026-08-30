@@ -3,15 +3,34 @@ import { site, contact } from "../data/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-black/10">
+<footer class="on-dark bg-forest-deep text-cream">
   <div
-    class="mx-auto flex max-w-5xl flex-col gap-3 px-6 py-10 text-sm text-ink/60 sm:flex-row sm:items-center sm:justify-between"
+    class="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-12 text-sm text-cream/65 sm:flex-row sm:items-center sm:justify-between"
   >
     <p>© {year} {site.name}</p>
-    <div class="flex gap-6">
-      <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href={contact.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href={`mailto:${contact.email}`}>Email</a>
+    <div class="flex gap-7">
+      <a
+        href={contact.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors duration-150 hover:text-burnt"
+      >
+        LinkedIn
+      </a>
+      <a
+        href={contact.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors duration-150 hover:text-burnt"
+      >
+        GitHub
+      </a>
+      <a
+        href={`mailto:${contact.email}`}
+        class="transition-colors duration-150 hover:text-burnt"
+      >
+        Email
+      </a>
     </div>
   </div>
 </footer>
