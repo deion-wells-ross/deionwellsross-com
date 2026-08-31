@@ -23,7 +23,7 @@ const links = [
       done, I'd like to hear about it.
     </p>
 
-    <div class="mt-12 grid gap-10 border-t border-espresso/20 pt-10 sm:grid-cols-2">
+    <div class="mt-12 border-t border-espresso/20 pt-10">
       <ul class="reveal space-y-6">
         {
           links.map((link) => (
@@ -42,13 +42,6 @@ const links = [
           ))
         }
       </ul>
-
-      <div class="reveal" style="transition-delay: 80ms">
-        <span class="eyebrow block text-espresso/70">Résumé</span>
-        <a href={contact.resume} download class="btn btn-primary mt-3">
-          Download résumé (PDF)
-        </a>
-      </div>
     </div>
   </div>
 </section>

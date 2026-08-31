@@ -1,7 +1,7 @@
 /*
   Central content + config store.
   PASS 1: placeholder copy. PASS 2: final positioning language, bio, projects,
-  real contact URLs, résumé filename.
+  real contact URLs.
 */
 
 export const site = {
@@ -15,12 +15,10 @@ export const site = {
     "Portfolio of Deion Wells Ross — translating business problems into AI-enabled solutions across implementation leadership, forward-deployed engineering, consulting, and adoption.",
 };
 
-// TODO(Pass 2): confirm real URLs + résumé file.
 export const contact = {
   email: "hello@deionwellsross.com",
   linkedin: "https://www.linkedin.com/in/deionwellsross/",
   github: "https://github.com/deion-wells-ross",
-  resume: "/resume.pdf",
 };
 
 export const nav = [
