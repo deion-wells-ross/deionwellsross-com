@@ -32,6 +32,22 @@ import { projects } from "../data/site";
                   </li>
                 ))}
               </ul>
+              {project.links && project.links.length > 0 && (
+                <ul class="mt-4 flex flex-wrap gap-2">
+                  {project.links.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-block border border-cream/25 px-2.5 py-1 text-xs tracking-wide text-cream/70 transition-colors hover:border-cream/60 hover:text-cream"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
 
             <dl class="space-y-5">

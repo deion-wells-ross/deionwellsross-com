@@ -36,21 +36,37 @@ export type Project = {
   technology: string[];
   contribution: string;
   outcome: string;
+  links?: { label: string; href: string }[];
 };
 
 // TODO(Pass 2): replace with 2–3 real projects and final copy.
 export const projects: Project[] = [
   {
-    title: "Placeholder Project One",
+    title: "AURI Finance",
     problem:
-      "A mid-size operations team spent hours each week manually reconciling data across disconnected systems, creating delays and error-prone handoffs.",
+      "Finance teams rely on manual workflows, deterministic accounting systems, human judgment, and financial controls to run processes like month-end close — simply adding an LLM doesn't make that trustworthy. The real question: how can specialized AI agents do real financial work while deterministic systems keep the math correct, independent controls catch agent mistakes, and humans keep authority over consequential decisions?",
     solution:
-      "Designed an AI-enabled workflow that extracts, validates, and routes the data automatically, with a human review step for exceptions only.",
-    technology: ["Workflow automation", "LLM extraction", "Internal APIs"],
+      "I built AURI Finance, an agentic finance department for a fictional B2B SaaS company. Seven Claude-powered agents — bookkeeping, accounts payable, accounts receivable, payroll, controller, FP&A, and CFO — handle the judgment calls, using scoped tools to investigate exceptions and escalate uncertainty instead of guessing. Two deterministic (non-AI) components, an orchestrator and a dashboard publisher, calculate every number and sequence the workflow. A close moves through the specialist agents, an independent control re-check, FP&A/CFO analysis, and a human approval gate before the period closes — so no agent's self-report is ever taken at face value.",
+    technology: [
+      "Agentic AI",
+      "Multi-Agent Systems",
+      "Human-in-the-Loop",
+      "Claude API",
+    ],
     contribution:
-      "Led discovery, mapped the current-state process, designed the target workflow, built the integration, and ran the adoption rollout with the team.",
+      "I defined the problem and the bar this system had to clear — that agents do real financial work rather than just demonstrate intelligence — and directed the architecture: specialized agents, deterministic services, scoped permissions, independent controls, and human approval gates. I used Claude and Claude Code as my agentic development environment to build, test, debug, and document the system end to end; this project is itself a demonstration of AI-native development.",
     outcome:
-      "Placeholder outcome — e.g. reduced cycle time from days to hours and eliminated a recurring category of manual errors.",
+      "Tested end to end against a fresh synthetic database the agents had never seen: 6 of 6 seeded anomalies found, 55/55 tests passing, $0.00 trial balance discrepancy, a 202-row audit trail, and a required human approval before close — for about $7.10 in total Claude API spend. Real agent mistakes surfaced during live testing; the independent controls caught them before they could complete a close.",
+    links: [
+      {
+        label: "View Case Study",
+        href: "https://deion-wells-ross.github.io/auri-finance/",
+      },
+      {
+        label: "View GitHub",
+        href: "https://github.com/deion-wells-ross/auri-finance",
+      },
+    ],
   },
   {
     title: "Placeholder Project Two",
